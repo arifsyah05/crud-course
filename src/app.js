@@ -28,7 +28,7 @@ function initializeApp() {
 
   try {
     // Initialize storage manager
-    app.storage = new EnhancedStorageManager("taskAppDay2", "2.0");
+    app.storage = new StorageManager("taskAppDay2", "2.0");
     console.log("✅ Storage manager initialized");
 
     // Initialize repositories

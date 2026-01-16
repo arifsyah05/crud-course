@@ -1,5 +1,3 @@
-const User = require("../models/User");
-
 /**
  * User Repository - Mengelola penyimpanan dan pengambilan data User
  *
@@ -237,7 +235,10 @@ class UserRepository {
     try {
       const usersData = this.storage.load(this.storageKey, []);
 
-      usersData.forEach((userData) => {
+      // Pastikan usersData adalah array
+      const dataArray = Array.isArray(usersData) ? usersData : [];
+
+      dataArray.forEach((userData) => {
         try {
           const user = User.fromJSON(userData);
           this.users.set(user.id, user);

@@ -1,5 +1,3 @@
-const EnhancedTask = require("../models/EnhancedTask");
-
 /**
  * Task Repository - Mengelola penyimpanan dan pengambilan data Task
  *
@@ -374,7 +372,10 @@ class TaskRepository {
     try {
       const tasksData = this.storage.load(this.storageKey, []);
 
-      tasksData.forEach((taskData) => {
+      // Pastikan tasksData adalah array
+      const dataArray = Array.isArray(tasksData) ? tasksData : [];
+
+      dataArray.forEach((taskData) => {
         try {
           const task = EnhancedTask.fromJSON(taskData);
           this.tasks.set(task.id, task);
